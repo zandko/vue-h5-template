@@ -1,0 +1,55 @@
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin wh($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin scw($size, $color, $weight: 400) {
+  font-size: $size;
+  color: $color;
+  font-weight: $weight;
+}
+
+@mixin fcc() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin fh {
+  display: flex;
+  align-items: center;
+}
+
+@mixin fj($type: space-between) {
+  display: flex;
+  justify-content: $type;
+}
+
+@mixin relative {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+@mixin flex($direction: column, $wrap: nowrap) {
+  display: flex;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+}
+
+@mixin ellipsis($line: 2, $line-height: 1.2) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $line;
+  line-height: $line-height;
+}

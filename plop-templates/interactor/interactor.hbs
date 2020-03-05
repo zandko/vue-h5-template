@@ -1,0 +1,45 @@
+import { Request } from '@/utils/request'
+import { {{ properCase name }} } from '@/constants/api/{{dashCase name}}'
+
+class {{ properCase name }}HttpInteractor {
+  service
+  constructor(service) {
+    this.service = service
+  }
+  async get{{ properCase name }}() {
+    try {
+      const options = { url: {{ properCase name }} }
+      return await this.service.get(options)
+    } catch (error) {
+      throw error
+    }
+  }
+  async create{{ properCase name }}(data) {
+    try {
+      const optons = { url: {{ properCase name }}, data }
+      await this.service.post(optons)
+    } catch (error) {
+      throw error
+    }
+  }
+  async delete{{ properCase name }}(id) {
+    try {
+      const options = { url: `${{{ properCase name }}}/${id}` }
+      await this.service.delete(options)
+    } catch (error) {
+      throw error
+    }
+  }
+  async update{{ properCase name }}(data, id) {
+    try {
+      const optons = {
+        url: `${{{ properCase name }}}/${id}`, data }
+      await this.service.put(optons)
+    } catch (error) {
+      throw error
+    }
+  }
+}
+
+const {{dashCase name}}HttpInteractor = new {{ properCase name }}HttpInteractor(Request.getInstance())
+export default {{dashCase name}}HttpInteractor

@@ -1,0 +1,58 @@
+import { DBRequest } from '../services/indexDB/request'
+
+class {{ properCase name }}Interactor {
+  service
+  constructor(service) {
+    this.service = service
+  }
+
+  async get{{ properCase name }}List(params) {
+    try {
+      const options = { name: '{{dashCase name}}', params }
+      const { data, total } = await this.service.getList(options)
+      return { data, total }
+    } catch (error) {
+      throw error
+    }
+  }
+
+  async create{{ properCase name }}(data) {
+    const options = { name: '{{dashCase name}}', data }
+    try {
+      await this.service.create(options)
+    } catch (error) {
+      throw error
+    }
+  }
+
+  async delete{{ properCase name }}(id) {
+    const options = { name: '{{dashCase name}}', id }
+    try {
+      await this.service.delete(options)
+    } catch (error) {
+      throw error
+    }
+  }
+
+  async update{{ properCase name }}(data) {
+    try {
+      const options = { name: '{{dashCase name}}', data }
+      await this.service.edit(options)
+    } catch (error) {
+      throw error
+    }
+  }
+
+  async get{{ properCase name }}(id) {
+    try {
+      const options = { name: '{{dashCase name}}', id }
+      return await this.service.getFind(options)
+    } catch (error) {
+      throw error
+    }
+  }
+}
+
+const {{dashCase name}}Interactor = new {{ properCase name }}Interactor(DBRequest.getInstance())
+
+export default {{dashCase name}}Interactor

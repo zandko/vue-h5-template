@@ -1,0 +1,7 @@
+[defaults]
+url=https://sentry.io
+org=d65818fe70e6
+project=mobile-china-goods
+
+[auth]
+token=0f2ecb8d52ad4778a1f5b7a884d45c146202626563864ec9bb0c804495a04d01
