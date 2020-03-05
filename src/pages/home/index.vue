@@ -2,7 +2,7 @@
   <van-address-list
     v-model="chosenAddressId"
     :list="list"
-    :default-tag-text="$t('hello')"
+    default-tag-text="默认"
     @add="onAdd"
     @edit="onEdit"
   />
