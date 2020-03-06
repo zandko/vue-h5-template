@@ -1,18 +1,18 @@
 <template>
   <div class="app-wrapper">
     <navbar />
-    <principal />
+    <app-main />
   </div>
 </template>
 
 <script>
-import Principal from './components/Principal'
+import AppMain from './components/AppMain'
 import Navbar from './components/Navbar'
 export default {
   name: 'Layout',
   components: {
-    Principal,
-    Navbar
+    Navbar,
+    AppMain
   }
 }
 </script>

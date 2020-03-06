@@ -1,5 +1,4 @@
 import Schema from 'async-validator'
-import { isString, isArray } from 'lodash'
 
 class ValidatorUtils {
   data
@@ -25,8 +24,8 @@ class ValidatorUtils {
         return (
           !dataKey ||
           (dataKey &&
-            ((isString(dataKey) && dataKey === key) ||
-              (isArray(dataKey) && dataKey.includes(key))))
+            ((_.isString(dataKey) && dataKey === key) ||
+              (_.isArray(dataKey) && dataKey.includes(key))))
         )
       })
       .forEach((key) => {

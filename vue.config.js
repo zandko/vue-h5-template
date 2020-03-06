@@ -175,7 +175,7 @@ module.exports = {
           .use(new SentryPlugin({
             release: version,
             include: path.join(__dirname, './dist/static/js'),
-            urlPrefix: '~/china-goods-h5/statis/js',
+            urlPrefix: '~/vue-h5-template/statis/js',
             ignore: ['node_modules']
           }))
           .end()
