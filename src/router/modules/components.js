@@ -26,6 +26,12 @@ const componentsRouter = {
       component: () => import('@/pages/components-demo/flyin'),
       name: 'FlyinDemo',
       meta: { title: 'Flyin' }
+    },
+    {
+      path: 'back-to-top',
+      component: () => import('@/pages/components-demo/backToTop'),
+      name: 'BackToTopDemo',
+      meta: { title: 'BackToTop' }
     }
   ]
 }

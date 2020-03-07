@@ -8,6 +8,10 @@ const setting = Object.freeze({
   flyin: {
     title: 'Flyin',
     name: 'FlyinDemo'
+  },
+  backToTop: {
+    title: 'BackToTop',
+    name: 'BackToTopDemo'
   }
 })
 
