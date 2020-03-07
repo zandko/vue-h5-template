@@ -1,4 +1,4 @@
-import { Request } from '@/utils/request'
+import { Request } from '@/core/services/http/request'
 import { CARDS } from '@/constants/api/test'
 
 class TestHttpInteractor {
