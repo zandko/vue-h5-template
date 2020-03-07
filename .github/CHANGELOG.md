@@ -1,3 +1,13 @@
+# 0.1.0 (2020-03-07)
+
+
+### Features
+
+* add BackToTop component ([79fca40](https://github.com/push-over/vue-h5-template/commit/79fca40070daf270d8acd07abc3d4a7088afd705))
+* increase loading component ([d801554](https://github.com/push-over/vue-h5-template/commit/d801554f0326b56b27199750a3526324e6821842))
+
+
+
 # 0.1.0 (2020-03-05)
 
 
