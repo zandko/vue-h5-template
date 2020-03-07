@@ -52,14 +52,14 @@ export default {
       el.style.opacity = 1
       el.addEventListener('transitionend', () => {
         el.style.display = 'none'
-        this.listenInCart()
+        this.targetLocation()
       })
       el.addEventListener('webkitAnimationEnd', () => {
         el.style.display = 'none'
-        this.listenInCart()
+        this.targetLocation()
       })
     },
-    listenInCart() {
+    targetLocation() {
       document.getElementById('buycar').classList.add('flyin-to-cart')
       setTimeout(() => {
         document.getElementById('buycar').classList.remove('flyin-to-cart')
@@ -73,14 +73,12 @@ export default {
 .flyin {
   position: fixed;
   z-index: 100;
-  top: 1rem;
-  height: 2rem;
-  width: 2rem;
+  top: 16px;
+  @include wh(32px, 32px);
   border-radius: 50%;
   .cutout {
     animation: 0.88s flyin ease-in-out;
-    width: 3rem;
-    height: 3rem;
+    @include wh(48px, 48px);
     border-radius: 50%;
   }
 }

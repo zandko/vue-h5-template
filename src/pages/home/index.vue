@@ -1,18 +1,19 @@
 <template>
-  <van-address-list
-    v-model="chosenAddressId"
-    :list="list"
-    default-tag-text="默认"
-    @add="onAdd"
-    @edit="onEdit"
-  />
+  <div>
+    <van-address-list
+      v-model="chosenAddressId"
+      :list="list"
+      default-tag-text="默认"
+      @add="onAdd"
+      @edit="onEdit"
+    />
+  </div>
 </template>
 
 <script>
 import { testInteractor } from '@/core'
 export default {
   name: 'Home',
-  props: {},
   data() {
     return {
       chosenAddressId: undefined,

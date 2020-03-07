@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import Layout from '@/layout'
+import componentsRouter from './modules/components'
 
 Vue.use(VueRouter)
 
@@ -44,15 +45,10 @@ export const routes = [
         component: () => import('@/pages/test/index'),
         name: 'EditTest',
         meta: { title: '修改地址', keepAlive: true }
-      },
-      {
-        path: 'move-dot',
-        component: () => import('@/pages/move-dot/index'),
-        name: 'MoveDot',
-        meta: { title: '飞入购物车', keepAlive: true }
       }
     ]
-  }
+  },
+  componentsRouter
 ]
 
 const createRouter = () => new VueRouter({

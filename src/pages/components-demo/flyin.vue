@@ -5,8 +5,8 @@
       :key="item"
       num="2"
       price="2.00"
-      desc="描述信息"
-      title="商品标题"
+      desc="机不可失，失不再来..."
+      title="ipad 大促销"
       thumb="https://img.yzcdn.cn/vant/ipad.jpeg"
     >
       <div slot="footer">
@@ -20,7 +20,7 @@
       <van-goods-action-button type="warning" text="加入购物车" @click="onClickButton" />
       <van-goods-action-button type="danger" text="立即购买" @click="onClickButton" />
     </van-goods-action>
-    <flyin :el-left="elLeft" :el-top="elTop" :balls="balls" />
+    <flyin v-if="balls.length" :el-left="elLeft" :el-top="elTop" :balls="balls" />
   </div>
 </template>
 
@@ -28,7 +28,7 @@
 import Flyin from '@/components/Flyin'
 
 export default {
-  name: 'MoveDot',
+  name: 'FlyinDemo',
   components: {
     Flyin
   },
@@ -42,10 +42,10 @@ export default {
   },
   methods: {
     onClickIcon() {
-      this.$toast('点击图标')
+      this.$toast('请点击列表加入购物车测试！')
     },
     onClickButton() {
-      this.$toast('点击按钮')
+      this.$toast('请点击列表加入购物车测试！')
     },
     addToCart() {
       this.productNum = this.productNum + 1

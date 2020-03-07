@@ -11,10 +11,34 @@
   height: $height;
 }
 
-@mixin scw($size, $color, $weight: 400) {
+@mixin minwh($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin maxwh($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin scw($size, $color: #333, $weight: 400) {
   font-size: $size;
   color: $color;
   font-weight: $weight;
+}
+
+@mixin fixcc {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin pcc {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 @mixin fcc() {
@@ -39,6 +63,22 @@
   height: 100%;
 }
 
+@mixin absolute($top:null, $right:null, $bottom:null, $left:null) {
+  position: absolute;
+  @if ($left!="" & & $left!=null) {
+    left: $left;
+  }
+  @if ($right!="" & & $right!=null) {
+    right: $right;
+  }
+  @if ($top!="" & & $top!=null) {
+    top: $top;
+  }
+  @if ($bottom!="" & & $bottom!=null) {
+    bottom: $bottom;
+  }
+}
+
 @mixin flex($direction: column, $wrap: nowrap) {
   display: flex;
   flex-direction: $direction;
@@ -52,4 +92,12 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: $line;
   line-height: $line-height;
+}
+
+
+@mixin backgroundImage($url) {
+	background-image: url($url);
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat 0 0;
 }

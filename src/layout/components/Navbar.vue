@@ -2,7 +2,7 @@
   <van-nav-bar
     :title="pageTitle"
     :left-arrow="pageTitle !== '首页'"
-    right-text="测试飞入购物车"
+    :right-text="pageTitle === '首页' ? '组件测试' : ''"
     @click-left="onClickLeft"
     @click-right="onClickRight"
   >
@@ -46,7 +46,7 @@ export default {
       this.$router.go(-1)
     },
     onClickRight() {
-      this.$router.push({ name: 'MoveDot' })
+      this.$router.push({ name: 'ComponentDemo' })
     }
   }
 }
