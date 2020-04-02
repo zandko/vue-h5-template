@@ -32,6 +32,12 @@ const componentsRouter = {
       component: () => import('@/pages/components-demo/backToTop'),
       name: 'BackToTopDemo',
       meta: { title: 'BackToTop' }
+    },
+    {
+      path: 'select',
+      component: () => import('@/pages/components-demo/select'),
+      name: 'SelectDemo',
+      meta: { title: 'Select' }
     }
   ]
 }

@@ -6,9 +6,9 @@ class TestHttpInteractor {
   constructor(service) {
     this.service = service
   }
-  async getTest() {
+  async getTest(params) {
     try {
-      const options = { url: CARDS }
+      const options = { url: CARDS, params }
       return await this.service.get(options)
     } catch (error) {
       throw error

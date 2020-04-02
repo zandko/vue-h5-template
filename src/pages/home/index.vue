@@ -7,11 +7,12 @@
       @add="onAdd"
       @edit="onEdit"
     />
+    <div class="ceshi" @click="ceshi">测试</div>
   </div>
 </template>
 
 <script>
-import { testInteractor } from '@/core'
+import { testInteractor, testHttpInteractor } from '@/core'
 export default {
   name: 'Home',
   data() {
@@ -31,6 +32,13 @@ export default {
     this.getTestList({ page: 1, count: 10 })
   },
   methods: {
+    async ceshi() {
+      const options = {
+        a: 'b',
+        c: 'd'
+      }
+      await testHttpInteractor.getTest(options)
+    },
     onAdd() {
       this.$router.push({ name: 'CreateTest' })
     },

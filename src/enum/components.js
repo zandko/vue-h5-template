@@ -12,6 +12,10 @@ const setting = Object.freeze({
   backToTop: {
     title: 'BackToTop',
     name: 'BackToTopDemo'
+  },
+  select: {
+    title: 'Select',
+    name: 'SelectDemo'
   }
 })
 
