@@ -7,7 +7,9 @@
       @add="onAdd"
       @edit="onEdit"
     />
-    <div class="ceshi" @click="ceshi">测试</div>
+    <div class="ceshi" @click="ceshi">
+      <img src="~@/assets/loading/loading.png" alt="">
+    </div>
   </div>
 </template>
 
@@ -64,3 +66,14 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.ceshi {
+  font-size: 16px;
+  img {
+    width: 50px;
+    height: 50px;
+  }
+}
+</style>
+

@@ -151,7 +151,7 @@ module.exports = {
                   priority: 10,
                   chunks: 'initial'
                 },
-                elementUI: {
+                vantUI: {
                   name: 'chunk-vantUI',
                   priority: 20,
                   test: /[\\/]node_modules[\\/]_?vant(.*)/
