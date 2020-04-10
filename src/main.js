@@ -10,13 +10,11 @@ import '@/pwa/registerServiceWorker'
 import router from '@/router'
 import store from '@/store'
 import Report from '@/utils/report'
-import { initPlatform } from '@/utils'
 import bus from '@/utils/bus'
 import filters from '@/filters'
 import i18n, { VueVantLocales } from '@/lang'
 
 VueVantLocales()
-initPlatform()
 
 Vue.config.productionTip = false
 
