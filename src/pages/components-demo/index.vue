@@ -5,7 +5,7 @@
         {{ item.title }}
       </div>
       <div>
-        <van-button size="mini" color="linear-gradient(to right, #4bb0ff, #6149f6)" @click="handleToPage(item.name)">查看</van-button>
+        <van-button v-preventReClick size="mini" color="linear-gradient(to right, #4bb0ff, #6149f6)" @click="handleToPage(item.name)">查看</van-button>
       </div>
     </div>
   </div>
@@ -22,7 +22,8 @@ export default {
   },
   methods: {
     handleToPage(name) {
-      this.$router.push({ name })
+      console.log('dddd')
+      // this.$router.push({ name })
     }
   }
 }

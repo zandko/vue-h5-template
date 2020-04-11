@@ -45,6 +45,7 @@ export const VueVantLocales = (lang = getLocale()) => {
       break
   }
 }
+VueVantLocales()
 
 export default new VueI18n({
   locale: getLocale(),

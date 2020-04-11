@@ -12,9 +12,8 @@ import store from '@/store'
 import Report from '@/utils/report'
 import bus from '@/utils/bus'
 import filters from '@/filters'
-import i18n, { VueVantLocales } from '@/lang'
-
-VueVantLocales()
+import preventReClick from '@/directive/prevent-re-click'
+import i18n from '@/lang'
 
 Vue.config.productionTip = false
 
@@ -47,6 +46,7 @@ Object.keys(filters).forEach(filterName => {
 
 Vue.use(Vant)
   .use(bus)
+  .use(preventReClick)
 
 new Vue({
   router,
