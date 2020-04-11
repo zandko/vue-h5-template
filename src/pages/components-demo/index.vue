@@ -22,8 +22,7 @@ export default {
   },
   methods: {
     handleToPage(name) {
-      console.log('dddd')
-      // this.$router.push({ name })
+      this.$router.push({ name })
     }
   }
 }

@@ -1,10 +1,11 @@
 <template>
   <div>
     <van-field
+      v-model="value"
       readonly
       clickable
       name="picker"
-      :value="value"
+      v-bind="$attrs"
       :label="label"
       :placeholder="placeholder"
       @click="showPicker = true"
@@ -13,7 +14,7 @@
       <van-picker
         show-toolbar
         :columns="columns"
-        @confirm="onConfirm"
+        @confirm="handleConfirmSelect"
         @cancel="showPicker = false"
       />
     </van-popup>
@@ -23,6 +24,9 @@
 <script>
 export default {
   name: 'Select',
+  model: {
+    prop: 'selectValue'
+  },
   props: {
     label: {
       type: String,
@@ -47,19 +51,30 @@ export default {
     safeAreaInsetBottom: {
       type: Boolean,
       default: false
+    },
+    selectValue: {
+      type: String
     }
   },
   data() {
     return {
-      value: '',
+      value: this.selectValue,
       showPicker: false
     }
   },
+  watch: {
+    selectValue: function(newVal) {
+      this.value = newVal
+    },
+    value(newVal) {
+      this.$emit('input', newVal)
+    }
+  },
   methods: {
-    onConfirm(value) {
+    handleConfirmSelect(value) {
       this.value = value
       this.showPicker = false
-      this.$emit('onConfirm', value)
+      this.$emit('confirm', value)
     }
   }
 }
