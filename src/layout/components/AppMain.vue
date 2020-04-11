@@ -9,26 +9,24 @@ import { routes } from '@/router'
 export default {
   name: 'Principal',
   computed: {
-    keepAliveList(routes) {
-      return []
+    keepAliveList() {
+      return this.filterKeepAliveRouter(routes)
     },
     key() {
       return this.$route.path
     }
   },
-  created() {
-    this.filterKeepAliveRouter(routes)
-  },
   methods: {
     filterKeepAliveRouter(routes) {
-      _(routes).forEach((route) => {
-        if (route.meta && route.meta.keepAlive) {
-          this.keepAliveList.push(route.name)
-        }
-        if (route.children && route.children.length) {
-          this.filterKeepAliveRouter(route.children)
-        }
-      })
+      const keepAliveList = []
+      const filterRouter = (routes2) => {
+        _(routes2).forEach((route) => {
+          if (route.meta && route.meta.keepAlive) keepAliveList.push(route.name)
+          if (route.children && route.children.length) filterRouter(route.children)
+        })
+        return keepAliveList
+      }
+      return filterRouter(routes)
     }
   }
 }

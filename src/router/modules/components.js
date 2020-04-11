@@ -19,7 +19,7 @@ const componentsRouter = {
       path: 'loading',
       component: () => import('@/pages/components-demo/loading'),
       name: 'LoadingDemo',
-      meta: { title: 'Loading' }
+      meta: { title: 'Loading', keepAlive: true }
     },
     {
       path: 'flyin',
