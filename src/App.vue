@@ -12,11 +12,22 @@ export default {
   components: {
     ServiceWorkerUpdatePopup
   },
+  provide() {
+    return {
+      reload: this.reload
+    }
+  },
   created() {
     this.handleFocusOut()
     this.handleResize()
   },
   methods: {
+    reload() {
+      this.isRouterAlive = false
+      this.$nextTick(() => {
+        this.isRouterAlive = true
+      })
+    },
     handleFocusOut() {
       document.addEventListener('focusout', () => {
         document.body.scrollTop = 0

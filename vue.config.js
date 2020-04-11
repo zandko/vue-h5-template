@@ -1,7 +1,7 @@
 const path = require('path')
 const SentryPlugin = require('@sentry/webpack-plugin')
 const VConsolePlugin = require('vconsole-webpack-plugin')
-// const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const LodashWebpackPlugin = require('lodash-webpack-plugin')
 const webpack = require('webpack')
 const version = require('./package.json').version
@@ -71,21 +71,21 @@ module.exports = {
       config.plugin('loadshReplace')
         .use(new LodashWebpackPlugin())
         .end()
-      // if (SENTRY_PLUGIN_ENABLED === 'no') {
-      //   config.plugin('uglifyjs-webpack-plugin')
-      //     .use(new UglifyJsPlugin({
-      //       uglifyOptions: {
-      //         compress: {
-      //           drop_debugger: true,
-      //           drop_console: true
-      //         },
-      //         warnings: false
-      //       },
-      //       sourceMap: false,
-      //       parallel: true
-      //     }))
-      //     .end()
-      // }
+      if (SENTRY_PLUGIN_ENABLED === 'no') {
+        config.plugin('uglifyjs-webpack-plugin')
+          .use(new UglifyJsPlugin({
+            uglifyOptions: {
+              compress: {
+                drop_debugger: true,
+                drop_console: true
+              },
+              warnings: false
+            },
+            sourceMap: false,
+            parallel: true
+          }))
+          .end()
+      }
     }
     config.plugin('VConsolePlugin')
       .use(new VConsolePlugin({
