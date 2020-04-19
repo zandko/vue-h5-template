@@ -1,8 +1,8 @@
-const { NODE_ENV, SENTRY_ENABLED } = process.env
+const { NODE_ENV, VUE_APP_SENTRY_ENABLED } = process.env
 const PROD = NODE_ENV === 'production'
 const plugins = []
 
-if (PROD && SENTRY_ENABLED === 'yes') {
+if (PROD && VUE_APP_SENTRY_ENABLED === 'yes') {
   plugins.push([
     'try-catch-error-report',
     {

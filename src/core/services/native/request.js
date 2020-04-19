@@ -3,6 +3,15 @@ import dsbridge from 'dsbridge'
 import NATIVE_ERROR_CODE_MAP from '@/constants/native-error-code'
 
 export class NativeService {
+  instance
+
+  static getInstance() {
+    if (!this.instance) {
+      this.instance = new NativeService()
+    }
+    return this.instance
+  }
+
   testDsbridge(params, onSuccess) {
     const cb = async(errCode) => {
       const msg = NATIVE_ERROR_CODE_MAP[errCode]

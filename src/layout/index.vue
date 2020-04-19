@@ -1,6 +1,6 @@
 <template>
   <div class="app-wrapper">
-    <navbar />
+    <navbar v-if="!hideNav" />
     <app-main />
   </div>
 </template>
@@ -13,6 +13,11 @@ export default {
   components: {
     Navbar,
     AppMain
+  },
+  computed: {
+    hideNav() {
+      return this.$route.meta.hideNav
+    }
   }
 }
 </script>

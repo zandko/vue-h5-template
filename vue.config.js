@@ -1,7 +1,7 @@
 const path = require('path')
 const SentryPlugin = require('@sentry/webpack-plugin')
 const VConsolePlugin = require('vconsole-webpack-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+// const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const LodashWebpackPlugin = require('lodash-webpack-plugin')
 const webpack = require('webpack')
 const version = require('./package.json').version
@@ -11,8 +11,8 @@ const {
   DEVSERVERPORT,
   NODE_ENV,
   VCONSOLE,
-  SENTRY_ENABLED,
-  SENTRY_PLUGIN_ENABLED
+  VUE_APP_SENTRY_ENABLED,
+  VUE_APP_SENTRY_PLUGIN_ENABLED
 } = process.env
 
 const resolve = dir => path.join(__dirname, dir)
@@ -24,7 +24,7 @@ module.exports = {
   outputDir: 'dist',
   assetsDir: 'static',
   lintOnSave: DEV,
-  productionSourceMap: PROD && SENTRY_ENABLED === 'yes' && SENTRY_PLUGIN_ENABLED === 'yes',
+  productionSourceMap: PROD && VUE_APP_SENTRY_ENABLED === 'yes' && VUE_APP_SENTRY_PLUGIN_ENABLED === 'yes',
   devServer: {
     port: Number(DEVSERVERPORT),
     open: true,
@@ -32,6 +32,15 @@ module.exports = {
       warnings: false,
       errors: true
     }
+    // proxy: {
+    //   '/v1': {
+    //     target: 'http://devbuyerapi.ywindex.com',
+    //     changeOrigin: true,
+    //     pathRewrite: {
+    //       '^/v1': ''
+    //     }
+    //   }
+    // }
   },
   pwa: {
     name: VUE_APP_TITLE,
@@ -58,6 +67,7 @@ module.exports = {
     }
   },
   chainWebpack(config) {
+    config.set('name', VUE_APP_TITLE)
     config.plugins.delete('preload')
     config.plugins.delete('prefetch')
 
@@ -71,21 +81,6 @@ module.exports = {
       config.plugin('loadshReplace')
         .use(new LodashWebpackPlugin())
         .end()
-      if (SENTRY_PLUGIN_ENABLED === 'no') {
-        config.plugin('uglifyjs-webpack-plugin')
-          .use(new UglifyJsPlugin({
-            uglifyOptions: {
-              compress: {
-                drop_debugger: true,
-                drop_console: true
-              },
-              warnings: false
-            },
-            sourceMap: false,
-            parallel: true
-          }))
-          .end()
-      }
     }
     config.plugin('VConsolePlugin')
       .use(new VConsolePlugin({
@@ -134,13 +129,13 @@ module.exports = {
     config
       .when(!DEV,
         config => {
-          config
-            .plugin('ScriptExtHtmlWebpackPlugin')
-            .after('html')
-            .use('script-ext-html-webpack-plugin', [{
-              inline: /runtime\..*\.js$/
-            }])
-            .end()
+          // config
+          //   .plugin('ScriptExtHtmlWebpackPlugin')
+          //   .after('html')
+          //   .use('script-ext-html-webpack-plugin', [{
+          //     inline: /runtime\..*\.js$/
+          //   }])
+          //   .end()
           config
             .optimization.splitChunks({
               chunks: 'all',
@@ -169,17 +164,15 @@ module.exports = {
         }
       )
 
-    if (!DEV) {
-      if (PROD && SENTRY_ENABLED === 'yes' && SENTRY_PLUGIN_ENABLED === 'yes') {
-        config.plugin('sentryPlugin')
-          .use(new SentryPlugin({
-            release: version,
-            include: path.join(__dirname, './dist/static/js'),
-            urlPrefix: '~/vue-h5-template/statis/js',
-            ignore: ['node_modules']
-          }))
-          .end()
-      }
+    if (PROD && VUE_APP_SENTRY_ENABLED === 'yes' && VUE_APP_SENTRY_PLUGIN_ENABLED === 'yes') {
+      config.plugin('sentryPlugin')
+        .use(new SentryPlugin({
+          release: version,
+          include: path.join(__dirname, './dist/static/js'),
+          urlPrefix: '~/statis/js',
+          ignore: ['node_modules']
+        }))
+        .end()
     }
   }
 }

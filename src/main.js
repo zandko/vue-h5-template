@@ -17,13 +17,13 @@ import i18n from '@/lang'
 
 Vue.config.productionTip = false
 
-const { NODE_ENV, SENTRY_ENABLED } = process.env
+const { NODE_ENV, VUE_APP_SENTRY_ENABLED } = process.env
 const PROD = NODE_ENV === 'production'
 
-if (PROD && SENTRY_ENABLED === 'yes') {
-  const { SENTRY_DSN } = process.env
+if (PROD && VUE_APP_SENTRY_ENABLED === 'yes') {
+  const { VUE_APP_SENTRY_DSN } = process.env
   const sentry = Report.getInstance(Vue, {
-    dsn: SENTRY_DSN,
+    dsn: VUE_APP_SENTRY_DSN,
     release: __VERSION__,
     environment: 'Prod'
   })

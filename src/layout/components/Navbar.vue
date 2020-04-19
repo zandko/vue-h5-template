@@ -1,16 +1,12 @@
 <template>
   <van-nav-bar
     :title="pageTitle"
-    :left-arrow="pageTitle !== '首页'"
-    :right-text="pageTitle === '首页' ? '组件测试' : ''"
+    left-arrow
     @click-left="onClickLeft"
-    @click-right="onClickRight"
   >
-    <div v-if="pageTitle === '首页'" slot="left">
-      <van-dropdown-menu>
-        <van-dropdown-item v-model="language" :options="langOption" />
-      </van-dropdown-menu>
-    </div>
+    <template #left>
+      <van-icon name="arrow-left" size="22" />
+    </template>
   </van-nav-bar>
 </template>
 
@@ -43,7 +39,7 @@ export default {
   },
   methods: {
     onClickLeft() {
-      this.$router.go(-1)
+      this.$router.back(-1)
     },
     onClickRight() {
       this.$router.push({ name: 'ComponentDemo' })
@@ -51,3 +47,15 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+::v-deep {
+  .van-icon-arrow-left {
+    color: #333333;
+  }
+
+  .van-nav-bar__title {
+    @include scw(17PX, #333333, bold);
+  }
+}
+</style>

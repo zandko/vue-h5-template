@@ -1,4 +1,4 @@
-import { Request } from '@/utils/request'
+import { Request } from '@/core/services/http/request'
 import { {{ properCase name }} } from '@/constants/api/{{dashCase name}}'
 
 class {{ properCase name }}HttpInteractor {
@@ -6,9 +6,9 @@ class {{ properCase name }}HttpInteractor {
   constructor(service) {
     this.service = service
   }
-  async get{{ properCase name }}() {
+  async get{{ properCase name }}(params = {}) {
     try {
-      const options = { url: {{ properCase name }} }
+      const options = { url: {{ properCase name }}, params }
       return await this.service.get(options)
     } catch (error) {
       throw error
