@@ -1,0 +1,9 @@
+dashboard:
+  component: "@serverless/tencent-website"
+  inputs:
+    region: ap-guangzhou
+    bucketName: praise
+    protocol: https
+    code:
+      src: dist
+      index: index.html
