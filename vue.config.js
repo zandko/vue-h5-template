@@ -62,7 +62,8 @@ module.exports = {
       preProcessor: 'scss',
       patterns: [
         resolve('src/styles/_variables.scss'),
-        resolve('src/styles/_mixins.scss')
+        resolve('src/styles/_mixins.scss'),
+        resolve('src/styles/_function.scss')
       ]
     }
   },

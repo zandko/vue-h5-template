@@ -1,7 +1,8 @@
 <template>
   <van-nav-bar
-    :title="pageTitle"
+    :title="transferTitle || pageTitle"
     left-arrow
+    :fixed="true"
     @click-left="onClickLeft"
   >
     <template #left>
@@ -35,6 +36,15 @@ export default {
     },
     pageTitle() {
       return this.$route.meta.title
+    },
+    transferTitle() {
+      let transferTitle = ''
+      this.$bus.on('changePageTitle', (title) => {
+        this.$nextTick(() => {
+          transferTitle = title
+        })
+      })
+      return transferTitle
     }
   },
   methods: {
