@@ -170,7 +170,7 @@ module.exports = {
         .use(new SentryPlugin({
           release: version,
           include: path.join(__dirname, './dist/static/js'),
-          urlPrefix: '~/statis/js',
+          urlPrefix: '~/static/js',
           ignore: ['node_modules']
         }))
         .end()
