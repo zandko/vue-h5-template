@@ -50,7 +50,7 @@
     "babel-eslint": "^10.0.3",
     "babel-plugin-try-catch-error-report": "^0.1.0",
     "chai": "^4.1.2",
-    "commitizen": "^4.0.3",
+    "commitizen": "^4.3.0",
     "conventional-changelog": "^3.1.18",
     "cz-conventional-changelog": "^3.1.0",
     "eslint": "^6.7.2",
