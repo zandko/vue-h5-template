@@ -24,7 +24,7 @@
     "dsbridge": "^3.1.4",
     "idb": "^5.0.1",
     "js-cookie": "^2.2.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
     "qs": "^6.9.1",
